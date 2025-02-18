@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Moderno com Diário de Estudos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Imagem de fundo para o corpo do site */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            background: url('assets/img/fotost.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        /* Imagem de fundo para o cabeçalho */
+        header {
+            background: url('assets/img/black.avif') no-repeat center center;
+            background-size: cover;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro para melhorar a legibilidade */
+            padding: 10px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro para melhorar a legibilidade */
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            color: #f4f4f4;
+            text-decoration: underline;
+        }
+
+        /* Conteúdo Principal */
+        main {
+            padding: 100px 20px 20px;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        section h2 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: rgba(51, 51, 51, 0.9);
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Estilos Adicionais */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #555;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .card h3 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .form-control {
+            border-radius: 8px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            transition: 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+        }
+
+        .table {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .table thead {
+            background: #007bff;
+            color: white;
+        }
+
+        .table th, .table td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        .table tbody tr {
+            transition: 0.3s;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            transition: 0.3s;
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 8px;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border: none;
+            transition: 0.3s;
+            padding: 8px 16px;
+            border-radius: 8px;
+        }
+
+        .btn-danger:hover {
+            background-color: #a71d2a;
+            transform: translateY(-2px);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            nav ul li {
+                display: block;
+                margin: 10px 0;
+            }
+
+            main {
+                padding: 80px 10px 10px;
+            }
+
+            section h2 {
+                font-size: 1.8rem;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Diario De Estudos</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Início</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#diario">Diário de Estudos</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <h2>Bem-vindo ao Meu Site</h2>
+            <p>Este é um exemplo de site moderno e responsivo, com um design limpo e agradável. Aqui você pode adicionar mais conteúdo e personalizar conforme sua necessidade.</p>
+            <a href="#about" class="btn">Saiba Mais</a>
+        </section>
+
+        <section id="about">
+            <div class="card">
+                <h3>Sobre Nós</h3>
+                <p>Somos uma empresa dedicada a fornecer soluções inovadoras e de alta qualidade para nossos clientes. Nossa missão é transformar ideias em realidade.</p>
+            </div>
+        </section>
+
+        <section id="diario">
+            <div class="card">
+                <h3>📚 Diário de Estudos</h3>
+                <form id="study-form">
+                    <div class="mb-3">
+                        <label for="subject" class="form-label">📖 Matéria</label>
+                        <input type="text" class="form-control" id="subject" placeholder="Digite a matéria" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="date" class="form-label">📅 Data</label>
+                        <input type="date" class="form-control" id="date" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="time" class="form-label">⏳ Tempo Estudado (em horas)</label>
+                        <input type="number" class="form-control" id="time" min="0" step="0.5" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Adicionar Registro</button>
+                </form>
+            </div>
+            
+            <div class="card mt-4">
+                <h3>📋 Histórico de Estudos</h3>
+                <table class="table table-striped mt-3">
+                    <thead>
+                        <tr>
+                            <th>Matéria</th>
+                            <th>Data</th>
+                            <th>Tempo (h)</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="study-list">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contato</h2>
+            <div class="card">
+                <h3>Entre em Contato Conosco</h3>
+                <p>Estamos sempre disponíveis para ajudar. Envie-nos uma mensagem e responderemos o mais breve possível.</p>
+                <form>
+                    <label for="name">Nome:</label>
+                    <input type="text" id="name" name="name" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="message">Mensagem:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                    <button type="submit" class="btn">Enviar</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Meu Site Moderno. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Adicionando um pouco de interatividade com JavaScript
+        document.querySelectorAll('nav ul li a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Script do Diário de Estudos
+        document.getElementById("study-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const subject = document.getElementById("subject").value;
+            const date = document.getElementById("date").value;
+            const time = document.getElementById("time").value;
+            
+            const table = document.getElementById("study-list");
+            const row = table.insertRow();
+            row.innerHTML = `
+                <td>${subject}</td>
+                <td>${date}</td>
+                <td>${time}</td>
+                <td>
+                    <button class="btn btn-danger btn-sm" onclick="this.parentElement.parentElement.remove()">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
+            `;
+            
+            document.getElementById("study-form").reset();
+        });
+    </script>
+</body>
+</html>
